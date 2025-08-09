@@ -46,15 +46,17 @@ A modern React application for tracking cryptocurrency prices, viewing detailed 
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables**
+
    ```bash
    # Copy the environment template
    cp .env.example .env
-   
+
    # Edit .env with your Firebase configuration (optional for basic features)
    # The app will work without Firebase auth, but you won't have user authentication
    ```
@@ -71,6 +73,7 @@ A modern React application for tracking cryptocurrency prices, viewing detailed 
      ```
 
 5. **Start the development server**
+
    ```bash
    npm run dev
    ```
@@ -240,4 +243,4 @@ If you have any questions or need help, please open an issue on GitHub.
 
 ---
 
-**Made with ❤️ by [Unknowncoder135](https://github.com/Unknowncoder135)**
+**Made with ❤️ by [Hiren](https://github.com/hiren-solanki1)**
