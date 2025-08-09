@@ -1,12 +1,12 @@
-import { Box, Button, TextField } from "@material-ui/core";
-import { useState } from "react";
-import { CryptoState } from "../../CryptoContext";
-import { auth } from "../../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { Box, Button, TextField } from '@material-ui/core';
+import { useState } from 'react';
+import { CryptoState } from '../../CryptoContext';
+import { auth } from '../../firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = ({ handleClose }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const { setAlert } = CryptoState();
 
@@ -14,8 +14,8 @@ const Login = ({ handleClose }) => {
     if (!email || !password) {
       setAlert({
         open: true,
-        message: "Please fill all the Fields",
-        type: "error",
+        message: 'Please fill all the Fields',
+        type: 'error',
       });
       return;
     }
@@ -25,7 +25,7 @@ const Login = ({ handleClose }) => {
       setAlert({
         open: true,
         message: `Sign Up Successful. Welcome ${result.user.email}`,
-        type: "success",
+        type: 'success',
       });
 
       handleClose();
@@ -33,7 +33,7 @@ const Login = ({ handleClose }) => {
       setAlert({
         open: true,
         message: error.message,
-        type: "error",
+        type: 'error',
       });
       return;
     }
@@ -43,9 +43,9 @@ const Login = ({ handleClose }) => {
     <Box
       p={3}
       style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "20px",
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
       }}
     >
       <TextField
@@ -53,7 +53,7 @@ const Login = ({ handleClose }) => {
         type="email"
         label="Enter Email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={e => setEmail(e.target.value)}
         fullWidth
       />
       <TextField
@@ -61,14 +61,14 @@ const Login = ({ handleClose }) => {
         label="Enter Password"
         type="password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={e => setPassword(e.target.value)}
         fullWidth
       />
       <Button
         variant="contained"
         size="large"
         onClick={handleSubmit}
-        style={{ backgroundColor: "#EEBC1D" }}
+        style={{ backgroundColor: '#EEBC1D' }}
       >
         Login
       </Button>

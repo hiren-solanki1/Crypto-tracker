@@ -1,19 +1,19 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "./firebase";
-import axios from "axios";
-import { CoinList } from "./config/api";
-import { onSnapshot, doc } from "firebase/firestore";
+import { createContext, useContext, useEffect, useState } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth, db } from './firebase';
+import axios from 'axios';
+import { CoinList } from './config/api';
+import { onSnapshot, doc } from 'firebase/firestore';
 
 const Crypto = createContext();
 
 const CryptoContext = ({ children }) => {
-  const [currency, setCurrency] = useState("INR");
-  const [symbol, setSymbol] = useState("₹");
+  const [currency, setCurrency] = useState('INR');
+  const [symbol, setSymbol] = useState('₹');
   const [alert, setAlert] = useState({
     open: false,
-    message: "",
-    type: "success",
+    message: '',
+    type: 'success',
   });
   const [user, setUser] = useState(null);
   const [coins, setCoins] = useState([]);
@@ -22,13 +22,13 @@ const CryptoContext = ({ children }) => {
 
   useEffect(() => {
     if (user) {
-      const coinRef = doc(db, "watchlist", user?.uid);
-      var unsubscribe = onSnapshot(coinRef, (coin) => {
+      const coinRef = doc(db, 'watchlist', user?.uid);
+      var unsubscribe = onSnapshot(coinRef, coin => {
         if (coin.exists()) {
           console.log(coin.data().coins);
           setWatchlist(coin.data().coins);
         } else {
-          console.log("No Items in Watchlist");
+          console.log('No Items in Watchlist');
         }
       });
 
@@ -39,7 +39,7 @@ const CryptoContext = ({ children }) => {
   }, [user]);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, user => {
       if (user) setUser(user);
       else setUser(null);
     });
@@ -54,11 +54,11 @@ const CryptoContext = ({ children }) => {
   };
 
   useEffect(() => {
-    if (currency === "INR") setSymbol("₹");
-    else if (currency === "USD") setSymbol("$");
-    else if (currency === "CZK")setSymbol("Kč")
-    else if (currency === "EUR")setSymbol("€")
-    else if (currency === "HKD")setSymbol("HK$")
+    if (currency === 'INR') setSymbol('₹');
+    else if (currency === 'USD') setSymbol('$');
+    else if (currency === 'CZK') setSymbol('Kč');
+    else if (currency === 'EUR') setSymbol('€');
+    else if (currency === 'HKD') setSymbol('HK$');
 
     fetchCoins();
     // eslint-disable-next-line react-hooks/exhaustive-deps
